@@ -1,9 +1,11 @@
 # Proj-info-M1
+
 Computer Sciences Project M1 : Brownian and ballistic annihilation processes
 
 Project Description:
 
 Simulates the trajectories and densities of particles and antiparticles when trapped in a box.
+
 Necessary Parameters:
 -Input setting "r"/"c" Meaning Recommended or custom settings. Recommend uses values known to behave correctly. Custom lets you choose all the Specific parameters
 -Representation Type 0/1 Plot only densities(0) or also plot trajectories (1)
