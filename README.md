@@ -7,7 +7,7 @@ Project Description:
 Simulates the trajectories and densities of particles and antiparticles when trapped in a box.
 
 Necessary Parameters:
--Input setting "r"/"c" Meaning Recommended or custom settings. Recommend uses values known to behave correctly. Custom lets you choose all the Specific parameters
+-Input setting "r"/"c" Meaning Recommended or custom settings. Recommend uses values known to behave correctly. Custom lets you choose all the Specific parameters  
 -Representation Type 0/1 Plot only densities(0) or also plot trajectories (1)
 -Dimensions Choose (1,2,3) Number of spatial dimensions (if 3D then an animation is saved in a given directory)  
 -Boundary Conditions 0/1 Either periodic(0) boundaries where edges rap around on themselves,or hard(1) boundaries where particles bounce of walls
