@@ -30,8 +30,8 @@ First you give the necessary parameters to the main function, this initialises a
 Then for each time you generate a list of the (anti)particle positions before and after a time step using the DO particle class function, which calculates the position of the (anti)particle after a time step dt when moving at speed determined by the speed distribution function GEN_V, away from it's initial position while taking into account the boundaries thanks to the BOUNDS function.  
 Then we need to handle the collisions & annihilations:  
 We first call the COLLISIONS on mode 0, this deals with the annihilations, since by first getting rid of those as soon as possible speeds up future calculations.  
-An interatction is found by calling the INTERCHECK function for each particle/antiparticle pair using the affine coeffecients for each of their trajectories as arguments.  
-This function finds the closest point between their trajectories and returns information on wether an interation is possible, it's type (collision or annihilation),where & when it happended, and information about the (anti)particles involved.  
+An interatction is found by calling the INTERCHECK function for each particle/antiparticle pair using the affine coeffecients for each of their trajectories obtained with GetCoefs, as arguments.  
+This function finds the closest point between their trajectories using MINIMISE and then returns information on wether an interation is possible, it's type (collision or annihilation),where & when it happended, and information about the (anti)particles involved.  
 We then remove the first particle antiparticles involved in the annihilation chronologically.  
 The problem is that after removing a annhilation the interactions change unpredictably and so we need to recheck them after each annihilation.   
 To do this more efficiently we first collect a history of all the annihilations that could take place, so that when rechecking the events we only check possible annihilations between particles and antiparticles that we know could interact. 
