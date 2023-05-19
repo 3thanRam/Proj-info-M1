@@ -1104,7 +1104,7 @@ if __name__ == "__main__":
                     print(str(Paramtest)+' is not a '+str(Paramtype[para])+' try again')
         PARAMS=PARAMS[:4]+[PARAMS[4:7]]+[PARAMS[7:]]
     if DIM==3:
-        filename='/home/ethan/Documents/Code/PYTHON/UNIcode/M1/INFO/PROJ/Proj_animation'
+        filename=''
         if filename=='':
             print('Enter location to store video in "filename" variable (near end of Proj_MAIN.py) then restart the program')
             import sys
