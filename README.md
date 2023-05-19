@@ -11,6 +11,7 @@ Necessary Parameters:
 -Representation Type 0/1 Plot only densities(0) or also plot trajectories (1)  
 -Dimensions Choose (1,2,3) Number of spatial dimensions (if 3D then an animation is saved in a given directory)  
 -Boundary Conditions 0/1 Either periodic(0) boundaries where edges rap around on themselves,or hard(1) boundaries where particles bounce of walls  
+-Velocity Distribution 0/1 Either uniform or normal velocity distribution (then value of standard deviation if 1)  
 
 Specific Parameters:  
 -Duration of simulation number of "time" iterations  
@@ -20,7 +21,7 @@ Specific Parameters:
 
 
 How to Use:  
-Save all files to the same directory.  
+Save all files except "old" folder to the same directory.  
 Install the requirements: pip install -r requirements.txt  
 Run Proj_MAIN.py  
 
