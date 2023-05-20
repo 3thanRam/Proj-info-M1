@@ -1,6 +1,7 @@
 # Proj-info-M1
 
-Computer Sciences Project M1 : Brownian and ballistic annihilation processes
+Computer Sciences Project M1 : Brownian and ballistic annihilation processes  
+by Ethan RAMSEY, Stanislas LAMBERT, Jules FAVREL  
 
 Project Description:
 
