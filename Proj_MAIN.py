@@ -1102,7 +1102,7 @@ if __name__ == "__main__":
                         print('Outside of parameter bounds',PARAMBounds[para],'Try again')
                 except:
                     print(str(Paramtest)+' is not a '+str(Paramtype[para])+' try again')
-        PARAMS=PARAMS[:4]+[PARAMS[4:7]]+[PARAMS[7:]]
+        PARAMS=PARAMS[:3]+[PARAMS[3:3+DIM]]+[PARAMS[3+DIM:]]
     if DIM==3:
         filename=''
         if filename=='':
