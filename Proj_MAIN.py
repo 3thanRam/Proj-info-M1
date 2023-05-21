@@ -795,7 +795,7 @@ def GEN_X():
 
     return(POS)
 
-sd=0
+sd=V0/1.2
 def GAUSS():
     """Generates a random velocity vector based on gaussian distribution of mean V0 and Standard deviation sd.
 
@@ -808,7 +808,7 @@ def GAUSS():
     Returns:
     - np.ndarray: a random velocity vector with values rounded to ROUNDDIGIT decimal places.
     """
-    return np.round(rng.normal(V0, sd, DIM_Numb), ROUNDDIGIT)
+    return np.round(rng.normal(0, sd, DIM_Numb), ROUNDDIGIT)
 
 def UNIFORM():
     """Generates a random velocity vector with components between -V0 and V0.
@@ -1056,7 +1056,7 @@ if __name__ == "__main__":
             print('Please choose between: ',[0,1])
     while Vdistr not in [0,1]:
         try:
-            Vdistr=int(input('Please choose either uniform or normal velocity distribution (0/1) '))
+            Vdistr=int(input('Please choose either uniform or gaussian random walk (0/1) '))
         except:
             print('Please choose between: ',[0,1])
 
