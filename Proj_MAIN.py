@@ -795,7 +795,7 @@ def GEN_X():
 
     return(POS)
 
-sd=V0/1.2
+sd=0
 def GAUSS():
     """Generates a random velocity vector based on gaussian distribution of mean V0 and Standard deviation sd.
 
@@ -808,7 +808,7 @@ def GAUSS():
     Returns:
     - np.ndarray: a random velocity vector with values rounded to ROUNDDIGIT decimal places.
     """
-    return np.round(rng.normal(0, sd, DIM_Numb), ROUNDDIGIT)
+    return np.round(rng.normal(V0, sd, DIM_Numb), ROUNDDIGIT)
 
 def UNIFORM():
     """Generates a random velocity vector with components between -V0 and V0.
