@@ -43,7 +43,7 @@ def fct_fit2(to,ko):
 
 
 
-def Denfct(DIM_Numb0,Density,Trange,ax):
+def Denfct(DIM_Numb0,Dens,Trange):
     """
     Plots the particle densities in a DIM_Numb-dimensional box as a function of time.
 
@@ -61,42 +61,57 @@ def Denfct(DIM_Numb0,Density,Trange,ax):
     DT=['',0.1,0.1,0.05]
     dt=float(DT[DIM_Numb])
 
+    
+    
 
-    ax.set_xlabel('Time(s)')
-    ax.set_ylabel('N')
-    ax.set_title('Particle Densities in a '+str(DIM_Numb)+'D box\n as a function of Time')
     if DIM_Numb==1:
         p_var=(2*np.pi)**(-3/4)
     elif DIM_Numb==2:
         p_var=2**(-3/2)/np.pi
     elif DIM_Numb==3:
         p_var=2**(-7/4)*(np.pi)**(-5/4)
-    
-    Ttheo=np.linspace(Trange[0],Trange[-1],10**3)
-    d0=Density[0][0]
-    d1=Density[1][0]
+    #eps=1
+    #D_var=[eps**2 /((4-DIM_Numb)*2*dt) for i in range(len(Trange))]
+    #DT=[D_var[tr]*Trange[tr] for tr in range(1,len(Trange))]
+    #D_theo0=[Dens[0][0]]+[Dens[0][0]**(1/2)*p_var*(dt)**(-DIM_Numb/4) for dt in DT]
+    #plt.loglog(Trange,D_theo0,ls='dashed',color='black',label='Theoretical Particle Density')
+
+    Ttheo=np.linspace(Trange[0],Trange[-1],10**2)
+
+    d0=Dens[0][0]
+    d1=Dens[1][0]
+
+
     DO=d0,d1 #initial densities for each particle type
-    k2=spopt.curve_fit(fct_fit,Trange,Density[0]+Density[1])[0][0]
+    k2=spopt.curve_fit(fct_fit,Trange,Dens[0]+Dens[1])[0][0]
+
+
     Dpart_theo=d0/(1+d0*k2*Ttheo)
     
-    #DO=np.array(Density[0][1:]),np.array(Density[1][1:])
-    D=spopt.curve_fit(fct_fit2,Trange[1:],Density[0][1:]+Density[1][1:],bounds=(0,np.inf))[0][0]
-    DLine=d0*Ttheo[1:]**(-1)/Ttheo[1]**(-1)
+    DLine=d0*Ttheo[1:]**(-0.5)/Ttheo[1]**(-0.5)
+    DLine2=d0*Ttheo[1:]**(-1)/Ttheo[1]**(-1)
+    #DO=np.array(Dens[0][1:]),np.array(Dens[1][1:])
+    D=spopt.curve_fit(fct_fit2,Trange[1:],Dens[0][1:]+Dens[1][1:],bounds=(0,np.inf))[0][0]
     D_theo0=[d0]+[d0**(1/2)*p_var*(D*dt)**(-DIM_Numb/4) for dt in Ttheo[1:]]
+    #graph are not in log/log anymore, need to put it manually
+    plt.scatter(Trange,Dens[0],color='black',label='Particle Density')
+    #plt.plot(Ttheo,Dpart_theo,color='purple',label='Particle Theo')
+    plt.plot(Ttheo[1:],DLine,color='grey',label='t^-1/2')
+    plt.plot(Ttheo[1:],DLine2,color='navy',label='t^-1')
+    #plt.plot(Ttheo,D_theo0,color='grey',label='Particle FIT')
 
-
-
-    ax.loglog(Trange,Density[0],color='red',label='Particle Density')
-    ax.loglog(Ttheo,Dpart_theo,color='purple',label='Particle Theo')
-    ax.loglog(Ttheo[1:],DLine,color='black',label=' t^-1')
-    ax.loglog(Ttheo,D_theo0,color='grey',label='Particle FIT')
-    if Density[0]!=Density[1]: 
-        ax.loglog(Trange,Density[1],color='blue',label='Anti-Particle Density')
+    if Dens[0]!=Dens[1]: 
+        plt.plot(Trange,Dens[1],color='blue',label='Anti-Particle Density')
         Dantipart_theo=d1/(1+d1*k2*Ttheo)
-        ax.loglog(Ttheo,Dantipart_theo,color='green',label='Antiparticle Theo')
+        plt.plot(Ttheo,Dantipart_theo,color='green',label='Antiparticle Theo')
         D_theo1=[d1]+[d1**(1/2)*p_var*(D*dt)**(-DIM_Numb/4) for dt in Ttheo[1:]]
-        ax.loglog(Ttheo,D_theo1,color='grey',label='AntiParticle FIT')
-    
-    ax.legend()
-    
+        plt.plot(Ttheo,D_theo1,color='grey',label='AntiParticle FIT')
+
+    # Set plot attributes
+    plt.grid()
+    plt.xlabel('Time(s)')
+    plt.ylabel('Density')
+    plt.title('Particle Densities in a '+str(DIM_Numb)+'D box\n as a function of Time')
+    plt.legend()
+    plt.show()
 
