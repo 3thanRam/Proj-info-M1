@@ -1048,7 +1048,7 @@ if __name__ == "__main__":
         print('You have chosen custom settings, depending on the configuration the computation time might be long!')
 
 
-    REPR,DIM,Bounds,Vdistr,KeepV=2,0,2,2,0
+    REPR,DIM,Bounds,Vdistr,KeepV=2,0,2,2,-1
     while REPR not in [0,1]:
         try:
             REPR=int(input('Would you like to only see densities or also plot trajectories?(0/1) '))
