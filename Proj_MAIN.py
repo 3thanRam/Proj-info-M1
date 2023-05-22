@@ -916,7 +916,7 @@ def main(T,n1,n2,vo,l,Numb_Dimensions,BoundsCond,D,File_path_name=None):
     Ntot=[Numb_part,Numb_antipart]
     V0=np.array(vo)
     L=l
-    Linf=[i*15 for i in range(DIM_Numb)]
+    Linf=[0 for i in range(DIM_Numb)]
 
 
     TRACKING,Vflipinfo=Listn1n2(Numb_part,Numb_antipart),Listn1n2(Numb_part,Numb_antipart)
